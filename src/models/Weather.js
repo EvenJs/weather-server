@@ -14,18 +14,23 @@ class Weather {
     // console.log(queryString);
     const location = await axios.get('/weather', { params: { q: queryString } })
       .then((res) => res.data.coord)
-      .catch((error) => console.log(error));
+      .catch((error) => error);
     // console.log(location);
     // console.log(123, location);
     return axios.get('/onecall', { params: { lat: location.lat, lon: location.lon, exclude: 'minutely' } })
       .then((dataArray) => {
-        // console.log(999, dataArray.data);
+        console.log(999, dataArray.data);
         const { current, hourly, daily } = dataArray.data;
         // console.log(1, current);
         // console.log(2, hourly);
         // console.log(3, daily);
+        const cityInfo = {
+          neme: queryString,
+          coord: { lat: dataArray.data.lat, lon: dataArray.data.lat },
+
+        };
         const weather = {
-          city: new City(current),
+          city: new City(cityInfo),
           current: new CurrentWeather(current),
           daily: daily.map((i) => new ForecastWeather(i)),
           hourly: hourly.map((i) => new HourlyWeather(i)),

@@ -24,9 +24,6 @@ app.use(routes);
 app.use(errorHandler);
 app.use(notFoundHandler);
 
-app.listen(PORT, (err) => {
-  if (err) {
-    console.error('Something wrong!');
-  }
+app.listen(PORT, () => {
   logger.info(`server working...... on port ${PORT}`);
 });
