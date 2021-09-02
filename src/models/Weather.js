@@ -19,16 +19,17 @@ class Weather {
     // console.log(123, location);
     return axios.get('/onecall', { params: { lat: location.lat, lon: location.lon, exclude: 'minutely' } })
       .then((dataArray) => {
-        console.log(999, dataArray.data);
+        // console.log(999, dataArray.data);
         const { current, hourly, daily } = dataArray.data;
         // console.log(1, current);
         // console.log(2, hourly);
         // console.log(3, daily);
         const cityInfo = {
-          neme: queryString,
-          coord: { lat: dataArray.data.lat, lon: dataArray.data.lat },
+          name: `${city}`,
+          coord: { lat: dataArray.data.lat, lon: dataArray.data.lon },
 
         };
+        // console.log(cityInfo);
         const weather = {
           city: new City(cityInfo),
           current: new CurrentWeather(current),

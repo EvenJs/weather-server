@@ -1,16 +1,17 @@
 class CurrentWeather {
   constructor(rawData) {
     const {
-      dt, temp, weather, humidity, sunrise, sunset,
+      dt, temp, humidity, sunrise, sunset,
     } = rawData;
+    const { main, description } = rawData.weather[0];
     this.time = dt;
     this.temp = temp;
     this.sunRise = sunrise;
     this.sunSet = sunset;
     this.humidity = humidity;
     this.windSpeed = rawData.wind_speed;
-    this.weather = weather;
-    // this.weatherDescription = weather.description;
+    this.weather = main;
+    this.weatherDescription = description;
     this.windDirection = this.calculateWindDirection(rawData.wind_deg);
   }
 

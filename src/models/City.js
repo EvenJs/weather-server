@@ -1,7 +1,8 @@
 class City {
   constructor(rawData) {
-    this.name = rawData.name;
-    this.coord = rawData.coord;
+    const { name, coord } = rawData;
+    this.name = name;
+    this.coord = coord;
   }
 }
 

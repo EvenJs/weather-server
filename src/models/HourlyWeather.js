@@ -1,9 +1,7 @@
-const CurrentWeather = require('./CurrentWeather');
-
-class HourlyWeather extends CurrentWeather {
+class HourlyWeather {
   constructor(rawData) {
-    super(rawData);
-    this.time = rawData.dt;
+    this.date = rawData.dt;
+    this.temperature = rawData.temp;
   }
 }
 
