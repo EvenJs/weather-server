@@ -6,12 +6,24 @@ class CurrentWeather {
     const { main, description } = rawData.weather[0];
     this.time = dt;
     this.temp = temp;
-    this.detail = {
-      sunRise: sunrise,
-      sunSet: sunset,
-      humidity: humidity,
-      windSpeed: rawData.wind_speed,
-    }
+    this.detail = [
+      {
+        type: 'humidity',
+        value: humidity,
+      },
+      {
+        type: 'wind_speed',
+        value: rawData.wind_speed,
+      },
+      {
+        type: 'sunrise',
+        value: sunrise,
+      },
+      {
+        type: 'sunset',
+        value: sunset
+      },
+    ]
     this.sunRise = sunrise;
     this.sunSet = sunset;
     this.humidity = humidity;
