@@ -3,6 +3,7 @@ const City = require('./City');
 const CurrentWeather = require('./CurrentWeather');
 const ForecastWeather = require('./ForecastWeather');
 const HourlyWeather = require('./HourlyWeather');
+const Time = require('./Time');
 
 class Weather {
   // eslint-disable-next-line no-useless-constructor
@@ -31,6 +32,7 @@ class Weather {
         };
         // console.log(cityInfo);
         const weather = {
+          time: new Time(dataArray.data),
           city: new City(cityInfo),
           current: new CurrentWeather(current),
           daily: daily.map((i) => new ForecastWeather(i)),
