@@ -21,9 +21,9 @@ class CurrentWeather {
       },
       {
         type: 'sunset',
-        value: sunset
+        value: sunset,
       },
-    ]
+    ];
     this.sunRise = sunrise;
     this.sunSet = sunset;
     this.humidity = humidity;
