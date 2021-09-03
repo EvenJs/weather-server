@@ -3,7 +3,7 @@ class CurrentWeather {
     const {
       dt, temp, humidity, sunrise, sunset,
     } = rawData;
-    const { main, description } = rawData.weather[0];
+    const { icon, main, description } = rawData.weather[0];
     this.time = dt;
     this.temp = temp;
     this.detail = [
@@ -29,6 +29,7 @@ class CurrentWeather {
     this.humidity = humidity;
     this.windSpeed = rawData.wind_speed;
     this.weather = main;
+    this.weatheIcon = icon;
     this.weatherDescription = description;
     this.windDirection = this.calculateWindDirection(rawData.wind_deg);
   }
