@@ -6,31 +6,25 @@ const HourlyWeather = require('./HourlyWeather');
 const Time = require('./Time');
 
 class Weather {
-  // eslint-disable-next-line no-useless-constructor
   // constructor() {}
 
   // eslint-disable-next-line class-methods-use-this
   async getData(city) {
     const queryString = `${city}`;
-    // console.log(queryString);
+
     const location = await axios.get('/weather', { params: { q: queryString } })
       .then((res) => res.data.coord)
       .catch((error) => error);
-    // console.log(location);
-    // console.log(123, location);
+
     return axios.get('/onecall', { params: { lat: location.lat, lon: location.lon, exclude: 'minutely' } })
       .then((dataArray) => {
-        // console.log(999, dataArray.data);
         const { current, hourly, daily } = dataArray.data;
-        // console.log(1, current);
-        // console.log(2, hourly);
-        // console.log(3, daily);
+
         const cityInfo = {
           name: `${city}`,
           coord: { lat: dataArray.data.lat, lon: dataArray.data.lon },
-
         };
-        // console.log(cityInfo);
+
         const weather = {
           time: new Time(dataArray.data),
           city: new City(cityInfo),
@@ -38,11 +32,9 @@ class Weather {
           daily: daily.map((i) => new ForecastWeather(i)),
           hourly: hourly.map((i) => new HourlyWeather(i)),
         };
+
         return weather;
       });
-    // const current = dataArray[0].data;
-    // const forcast = dataArray[1].data;
-    // });
   }
 }
 
