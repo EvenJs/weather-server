@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "This is an api server for Weather service",
+    "title": "Open Weather API",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "Weather",
+      "description": "Everything about weather"
+    },
+    {
+      "name": "Default",
+      "description": "root"
+    }
+  ],
+  "paths": {
+    "/api/weather": {
+      "get": {
+        "tags": ["weather"],
+        "summary": "Find all realted weather",
+        "description": "Get all weather data about a city",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/City"
+          }
+        ],
+        "response": {
+          "200": {
+            "$ref": "#/components/responses/OK"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServerBusy"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": ["Default"],
+        "description": "welcome response",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Welcome"
+          }
+        }
+      }
+    }
+  },
+  "component": 
+}
